@@ -34,6 +34,9 @@ jobs:
       - name: Install Quartz plugins
         run: node -e "import('./quartz/cli/plugin-git-handlers.js').then(m => m.handlePluginResolve())"
 
+      - name: Patch footer
+        run: node scripts/patch-footer.mjs
+
       - name: Build
         run: npx quartz build
 
