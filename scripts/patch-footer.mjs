@@ -5,14 +5,28 @@ const FILES = [
   ".quartz/plugins/footer/dist/index.js",
 ]
 
-// Matches the <p> children block inside the footer render — handles any Quartz default footer
-const PATTERN =
-  /\/\* @__PURE__ \*\/ u2\("p", \{ children: \[[^\]]*(?:\[[^\]]*\][^\]]*)*\] \}\)/
+// Replace the entire Footer_default factory with our custom version.
+// This avoids fragile regex on nested JSX structures.
+const START = "var Footer_default = ((opts) => {"
+const END = "export { Footer_default as Footer };"
 
-const REPLACEMENT = `/* @__PURE__ */ u2("p", { children: [
-      "\\xA9 ", year, " \\xB7 ",
-      /* @__PURE__ */ u2("a", { href: "https://ruicoelho.dev", children: "Rui Coelho" })
-    ] })`
+const REPLACEMENT = `var Footer_default = ((opts) => {
+  const Footer = ({ displayClass, cfg }) => {
+    const year = (/* @__PURE__ */ new Date()).getFullYear();
+    const links = opts?.links ?? [];
+    return /* @__PURE__ */ u2("footer", { class: \`\${displayClass ?? ""}\`, children: [
+      /* @__PURE__ */ u2("p", { children: [
+        "\\xA9 ", year, " \\xB7 ",
+        /* @__PURE__ */ u2("a", { href: "https://ruicoelho.dev", children: "Rui Coelho" })
+      ] }),
+      /* @__PURE__ */ u2("ul", { children: Object.entries(links).map(([text, link]) => /* @__PURE__ */ u2("li", { children: /* @__PURE__ */ u2("a", { href: link, children: text }) })) })
+    ] });
+  };
+  Footer.css = footer_default;
+  return Footer;
+});
+
+export { Footer_default as Footer };`
 
 let patched = 0
 for (const file of FILES) {
@@ -21,11 +35,13 @@ for (const file of FILES) {
     console.log(`Already patched: ${file}`)
     continue
   }
-  const updated = content.replace(PATTERN, REPLACEMENT)
-  if (updated === content) {
-    console.error(`Pattern not found in: ${file}`)
+  const startIdx = content.indexOf(START)
+  const endIdx = content.indexOf(END)
+  if (startIdx === -1 || endIdx === -1) {
+    console.error(`Markers not found in: ${file}`)
     process.exit(1)
   }
+  const updated = content.substring(0, startIdx) + REPLACEMENT
   writeFileSync(file, updated)
   console.log(`Patched: ${file}`)
   patched++
