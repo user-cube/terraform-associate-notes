@@ -1,11 +1,11 @@
 ---
 title: Terraform Associate Notes
-description: "Study notes for the HashiCorp Certified: Terraform Associate (003) exam."
+description: "Study notes for the HashiCorp Certified: Terraform Associate (004) exam."
 ---
 
 # Terraform Associate Notes
 
-Personal study notes for the **HashiCorp Certified: Terraform Associate (003)** exam.
+Personal study notes for the **HashiCorp Certified: Terraform Associate (004)** exam.
 
 ## Exam Overview
 
@@ -38,5 +38,5 @@ Personal study notes for the **HashiCorp Certified: Terraform Associate (003)** 
 ## Resources
 
 - [Exam Overview](https://developer.hashicorp.com/certifications/infrastructure-automation)
-- [Study Guide](https://developer.hashicorp.com/terraform/tutorials/certification-003/associate-study-003)
-- [Sample Questions](https://developer.hashicorp.com/terraform/tutorials/certification-003/associate-questions)
+- [Study Guide](https://developer.hashicorp.com/terraform/tutorials/certification-004/associate-study-004)
+- [Sample Questions](https://developer.hashicorp.com/terraform/tutorials/certification-004/associate-questions)
