@@ -1,6 +1,10 @@
 ---
 title: "CLI & Core Workflow"
 description: "Essential Terraform CLI commands, block types, flags, and the core Write → Plan → Apply workflow."
+tags:
+  - terraform
+  - cli
+  - cheatsheet
 ---
 
 ## Core Workflow

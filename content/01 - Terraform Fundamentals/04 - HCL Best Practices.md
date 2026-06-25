@@ -1,6 +1,10 @@
 ---
 title: "04 - HCL Best Practices"
 description: "Best practices for writing, organising, and maintaining Terraform HCL code."
+tags:
+  - terraform
+  - hcl
+  - best-practices
 ---
 
 ## File Types
