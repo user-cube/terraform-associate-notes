@@ -38,7 +38,7 @@ description: "Study notes for the HashiCorp Certified: Terraform Associate (004)
 | [[01 - Terraform Foundations]] | IaC concepts, Terraform purpose, core components, HCL basics | 1 · 2 · 3 |
 | [[02 - Core Terraform Workflow]] | Write, Init, Plan, Apply, Destroy | 6 |
 | [[03 - Terraform CLI]] | Essential commands, flags, environment variables | 3 · 4 |
-| [[04 - Terraform Configuration Foundations]] | File structure, variables, outputs, data sources, meta-arguments | 8 |
+| [[04 - Terraform Configuration Foundations]] | File structure, HCL blocks, providers, variables, outputs, data sources, meta-arguments | 8 |
 | [[05 - Terraform State]] | State management, backends, locking, remote state | 7 |
 | [[06 - Terraform Modules]] | Module structure, sources, versioning, reuse | 5 |
 | [[07 - Resource Behavior]] | Lifecycle, import, workspaces, provisioners | 4 |
