@@ -41,7 +41,7 @@ for (const file of FILES) {
     console.error(`Markers not found in: ${file}`)
     process.exit(1)
   }
-  const updated = content.substring(0, startIdx) + REPLACEMENT
+  const updated = content.substring(0, startIdx) + REPLACEMENT + content.substring(endIdx + END.length)
   writeFileSync(file, updated)
   console.log(`Patched: ${file}`)
   patched++

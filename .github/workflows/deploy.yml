@@ -40,6 +40,9 @@ jobs:
       - name: Build
         run: npx quartz build
 
+      - name: Patch explorer (deduplicate nav listeners)
+        run: node scripts/patch-explorer.mjs
+
       - uses: actions/upload-pages-artifact@v4
         with:
           path: public
